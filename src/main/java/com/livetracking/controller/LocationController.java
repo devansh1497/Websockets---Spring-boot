@@ -11,8 +11,7 @@ public class LocationController {
 
     @MessageMapping("/location/{topic}")
     @SendTo("/location/{topic}")
-    public String locationTracking(@DestinationVariable String topic, LocationCoordinate coordinate) {
-        System.out.println("Received message on topic " + topic + ": " + coordinate);
+    public String locationTracking(@DestinationVariable("topic") String topic, LocationCoordinate coordinate) {
         return "Delivery man reached at: " + coordinate;
     }
 }
